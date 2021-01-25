@@ -5,7 +5,7 @@ import AppButton from '../components/AppButton';
 import AppOutlineButton from '../components/AppOutlineButton';
 import colors from '../config/colors';
 
-const WelcomeScreen = () => {
+const WelcomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.round}></View>
@@ -13,8 +13,17 @@ const WelcomeScreen = () => {
         <Image style={styles.logo} source={require('../assets/logo-red.png')} />
       </View>
       <View style={styles.buttonContainer}>
-        <AppButton title='Sign In' bgColor='white' textColor='primary' />
-        <AppOutlineButton title='Create Account' color='white' />
+        <AppButton
+          title='Sign In'
+          bgColor='white'
+          textColor='primary'
+          onPress={() => navigation.navigate('SignIn')}
+        />
+        <AppOutlineButton
+          title='Create Account'
+          color='white'
+          onPress={() => navigation.navigate('SignUp')}
+        />
       </View>
     </View>
   );
@@ -40,7 +49,7 @@ const styles = StyleSheet.create({
   round: {
     width: 300,
     height: 300,
-    backgroundColor: colors.secondary,
+    backgroundColor: '#df3f52',
     borderRadius: 150,
     position: 'absolute',
     top: -80,

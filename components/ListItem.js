@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, StyleSheet, Image, TouchableHighlight } from 'react-native';
+import { View, StyleSheet, Image, TouchableHighlight, Text } from 'react-native';
+import { Fontisto } from '@expo/vector-icons';
 
 import colors from '../config/colors';
 
@@ -11,7 +12,12 @@ const ListItem = ({ title, subtitle, image, IconComponent, onPress }) => {
         {image && <Image style={styles.image} source={image} />}
         <View style={styles.detailContainer}>
           <Text style={styles.title}>{title}</Text>
-          {subtitle && <AppText style={styles.subtitle}>{subtitle}</AppText>}
+          {subtitle && (
+            <View style={styles.subtitleContainer}>
+              <Fontisto name='blood-drop' color={colors.primary} size={20} />
+              <Text style={styles.subtitle}>{subtitle}</Text>
+            </View>
+          )}
         </View>
       </View>
     </TouchableHighlight>
@@ -23,6 +29,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     padding: 15,
     backgroundColor: colors.white,
+    marginBottom: 10,
   },
   detailContainer: {
     marginLeft: 10,
@@ -39,6 +46,11 @@ const styles = StyleSheet.create({
   subtitle: {
     color: colors.medium,
     fontSize: 16,
+    marginLeft: 5,
+  },
+  subtitleContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
 

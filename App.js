@@ -1,12 +1,9 @@
 import React from 'react';
 
-import Welcome from './screens/Welcome';
-import SignIn from './screens/SignIn';
-import SignUp from './screens/SignUp';
-import Donors from './screens/Donors';
+import Navigation from './Navigation';
 
 const App = () => {
-  return <Donors />;
+  return <Navigation />;
 };
 
 export default App;

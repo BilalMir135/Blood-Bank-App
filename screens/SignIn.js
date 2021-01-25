@@ -1,6 +1,7 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import * as Yup from 'yup';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import Screen from '../components/Screen';
 import Para from '../components/Para';
@@ -12,9 +13,19 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required().min(4).label('Password'),
 });
 
-const SignIn = () => {
+const SignIn = ({ navigation }) => {
+  const handleSubmit = values => {
+    console.log(values);
+    navigation.navigate('Donors');
+  };
+
   return (
-    <Screen style={styles.container}>
+    <KeyboardAwareScrollView
+      resetScrollToCoords={{ x: 0, y: 0 }}
+      contentContainerStyle={styles.container}
+      behavior='height'
+    >
+      {/* <Screen style={styles.container}> */}
       <View style={styles.logoSec}>
         <Image style={styles.logo} source={require('../assets/logo-red.png')} />
         <Text style={styles.heading}>Welcome To Blood Bank</Text>
@@ -23,7 +34,7 @@ const SignIn = () => {
       </View>
       <AppForm
         initialValues={{ email: '', password: '' }}
-        onSubmit={values => console.log(values)}
+        onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
         <AppFormField
@@ -49,7 +60,8 @@ const SignIn = () => {
           <SubmitButton title='Sign In' />
         </View>
       </AppForm>
-    </Screen>
+      {/* </Screen> */}
+    </KeyboardAwareScrollView>
   );
 };
 
@@ -57,6 +69,7 @@ const styles = StyleSheet.create({
   container: {
     padding: 20,
     alignItems: 'center',
+    height: '100%',
   },
   logoSec: {
     alignItems: 'center',

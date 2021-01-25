@@ -13,7 +13,12 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required().min(4).label('Password'),
 });
 
-const SignUp = () => {
+const SignUp = ({ navigation }) => {
+  const handleSubmit = values => {
+    console.log(values);
+    navigation.navigate('Donors');
+  };
+
   return (
     <Screen style={styles.container}>
       <View style={styles.logoSec}>
@@ -24,7 +29,7 @@ const SignUp = () => {
       </View>
       <AppForm
         initialValues={{ email: '', password: '' }}
-        onSubmit={values => console.log(values)}
+        onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
         <AppFormField
