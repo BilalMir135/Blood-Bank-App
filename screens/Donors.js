@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import colors from '../config/colors';
@@ -8,13 +8,13 @@ import ListItem from '../components/ListItem';
 
 const donors = [
   {
-    id: 1,
+    id: '1',
     title: 'Bilal Mir',
     subtitle: 'O+',
     image: require('../assets/dp.jpg'),
   },
   {
-    id: 2,
+    id: '2',
     title: 'John Doe',
     subtitle: 'AB-',
     image: require('../assets/person.jpg'),
@@ -26,12 +26,11 @@ const Donors = ({ navigation }) => {
     <Screen style={styles.screen}>
       <View style={styles.header}>
         <Text style={styles.text}>Donors</Text>
-        <MaterialCommunityIcons
-          name='logout'
-          size={20}
-          color={colors.medium}
-          onPress={() => navigation.navigate('SignIn')}
-        />
+        <TouchableWithoutFeedback onPress={() => navigation.navigate('SignIn')}>
+          <View style={styles.logout}>
+            <MaterialCommunityIcons name='logout' size={20} color={colors.white} />
+          </View>
+        </TouchableWithoutFeedback>
       </View>
       <FlatList
         data={donors}
@@ -65,6 +64,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: 10,
+  },
+  logout: {
+    backgroundColor: colors.primary,
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 

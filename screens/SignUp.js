@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View, ScrollView } from 'react-native';
 import * as Yup from 'yup';
 
 import Screen from '../components/Screen';
@@ -20,63 +20,65 @@ const SignUp = ({ navigation }) => {
   };
 
   return (
-    <Screen style={styles.container}>
-      <View style={styles.logoSec}>
-        <Image style={styles.logo} source={require('../assets/logo-red.png')} />
-        <Text style={styles.heading}>Welcome To Blood Bank</Text>
-        <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Let's Get Started!</Text>
-        <Para>Please create a new account!</Para>
-      </View>
-      <AppForm
-        initialValues={{ email: '', password: '' }}
-        onSubmit={handleSubmit}
-        validationSchema={validationSchema}
-      >
-        <AppFormField
-          autoCapitalize='none'
-          autoCorrect={false}
-          keyboardType='email-address'
-          name='email'
-          placeholder='Email'
-          textContentType='emailAddress'
-        />
-        <AppFormField
-          autoCapitalize='none'
-          autoCorrect={false}
-          keyboardType='default'
-          name='fname'
-          placeholder='First Name'
-          textContentType='name'
-        />
-        <AppFormField
-          autoCapitalize='none'
-          autoCorrect={false}
-          keyboardType='default'
-          name='lname'
-          placeholder='Last Name'
-          textContentType='name'
-        />
-        <AppFormField
-          autoCapitalize='none'
-          autoCorrect={false}
-          name='password'
-          placeholder='Password'
-          secureTextEntry
-          textContentType='password'
-        />
-        <AppFormField
-          autoCapitalize='none'
-          autoCorrect={false}
-          name='confirmPassword'
-          placeholder='Confirm Password'
-          secureTextEntry
-          textContentType='password'
-        />
-        <View style={styles.buttonContainer}>
-          <SubmitButton title='Sign Up' />
+    <ScrollView>
+      <Screen style={styles.container}>
+        <View style={styles.logoSec}>
+          <Image style={styles.logo} source={require('../assets/logo-red.png')} />
+          <Text style={styles.heading}>Welcome To Blood Bank</Text>
+          <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Let's Get Started!</Text>
+          <Para>Please create a new account!</Para>
         </View>
-      </AppForm>
-    </Screen>
+        <AppForm
+          initialValues={{ email: '', password: '' }}
+          onSubmit={handleSubmit}
+          validationSchema={validationSchema}
+        >
+          <AppFormField
+            autoCapitalize='none'
+            autoCorrect={false}
+            keyboardType='email-address'
+            name='email'
+            placeholder='Email'
+            textContentType='emailAddress'
+          />
+          <AppFormField
+            autoCapitalize='none'
+            autoCorrect={false}
+            keyboardType='default'
+            name='fname'
+            placeholder='First Name'
+            textContentType='name'
+          />
+          <AppFormField
+            autoCapitalize='none'
+            autoCorrect={false}
+            keyboardType='default'
+            name='lname'
+            placeholder='Last Name'
+            textContentType='name'
+          />
+          <AppFormField
+            autoCapitalize='none'
+            autoCorrect={false}
+            name='password'
+            placeholder='Password'
+            secureTextEntry
+            textContentType='password'
+          />
+          <AppFormField
+            autoCapitalize='none'
+            autoCorrect={false}
+            name='confirmPassword'
+            placeholder='Confirm Password'
+            secureTextEntry
+            textContentType='password'
+          />
+          <View style={styles.buttonContainer}>
+            <SubmitButton title='Sign Up' />
+          </View>
+        </AppForm>
+      </Screen>
+    </ScrollView>
   );
 };
 
@@ -104,8 +106,6 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     width: '100%',
-    position: 'absolute',
-    bottom: 10,
   },
 });
 

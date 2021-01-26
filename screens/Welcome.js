@@ -10,7 +10,7 @@ const WelcomeScreen = ({ navigation }) => {
     <View style={styles.container}>
       <View style={styles.round}></View>
       <View>
-        <Image style={styles.logo} source={require('../assets/logo-red.png')} />
+        <Image style={styles.logo} source={require('../assets/logo-white.png')} />
       </View>
       <View style={styles.buttonContainer}>
         <AppButton
